@@ -83,12 +83,18 @@ export const Navbar = styled.nav`
         }
       }
     }
+    .cart:hover {
+      color: ${colors.colorPrimary50};
+    }
 
     .logout {
       color: #bdbdbd;
       font-size: 30px;
       cursor: pointer;
       display: flex;
+    }
+    .logout:hover {
+      color: ${colors.colorPrimary50};
     }
   }
 `;

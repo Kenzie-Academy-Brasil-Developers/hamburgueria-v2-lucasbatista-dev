@@ -66,6 +66,23 @@ main {
   .teste{
     height: 100px;
   }
- 
+  .modal-overlay{
+    background: rgba(18, 18, 20, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content{
+    width: 90%;
+    max-width: 450px;   
+   
+    border-radius: 6px;
+
+}
 
 `;

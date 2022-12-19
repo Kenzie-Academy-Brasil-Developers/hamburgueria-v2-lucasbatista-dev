@@ -7,7 +7,13 @@ import { AxiosError } from "axios";
 interface iUserContextProps {
   children: React.ReactNode;
 }
-
+interface iFiltredProducts {
+  id: string;
+  name: string;
+  category: string;
+  img: string;
+  price: number;
+}
 interface iUserContext {
   submitLogin: (data: { email?: string; password?: string }) => void;
   loading: boolean;
@@ -16,13 +22,28 @@ interface iUserContext {
     email?: string;
     password?: string;
   }) => void;
+  autoLogin: () => Promise<void>;
+  products: iDataProducts[];
+  filtredProducts: iFiltredProducts[];
+  setFiltredProducts: any;
 }
-
+interface iDataProducts {
+  id: string;
+  name: string;
+  category: string;
+  img: string;
+  price: number;
+}
 export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iUserContextProps) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [products, setProducts] = useState([] as iDataProducts[]);
+
+  const [filtredProducts, setFiltredProducts] = useState(
+    [] as iFiltredProducts[]
+  );
 
   // ----------------------LOGIN----------------------
 
@@ -86,18 +107,29 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     try {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-      const response = await api.get("products");
-      console.log(response);
+      const { data } = await api.get("products");
+      setProducts(data);
+      setFiltredProducts(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
-  useEffect(() => {
-    autoLogin();
-  }, []);
+  // useEffect(() => {
+  //   autoLogin();
+  // }, []);
 
   return (
-    <UserContext.Provider value={{ submitLogin, loading, submitRegister }}>
+    <UserContext.Provider
+      value={{
+        submitLogin,
+        loading,
+        submitRegister,
+        autoLogin,
+        products,
+        filtredProducts,
+        setFiltredProducts,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

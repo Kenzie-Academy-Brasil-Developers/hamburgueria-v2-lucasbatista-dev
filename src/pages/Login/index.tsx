@@ -10,6 +10,7 @@ import { AsideInfo } from "../../components/AsideInfo";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./loginSchema";
+import Logo from "../../assets/logoKenzie.svg";
 
 export const Login = () => {
   const { submitLogin, loading } = useContext(UserContext);
@@ -32,6 +33,7 @@ export const Login = () => {
   return (
     <ContainterLogin>
       <FormContainer>
+        {/* <img className="mobileLogo" src={Logo} alt="" /> */}
         <form noValidate onSubmit={handleSubmit(submitLogin)}>
           <h2>Login</h2>
           <InputForm
@@ -51,7 +53,7 @@ export const Login = () => {
             {loading ? "Fazendo o Login" : "Logar"}
           </Button>
         </form>
-        <span>
+        <span className="createAccount">
           Crie sua conta para saborear muitas delícias e matar sua fome!
         </span>
         <Link className="button gray xl" to="/cadastro">

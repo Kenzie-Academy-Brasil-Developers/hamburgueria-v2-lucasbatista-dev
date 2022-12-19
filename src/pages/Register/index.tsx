@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { registerSchema } from "./registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserContext } from "../../contexts/UserContext";
+import Logo from "../../assets/logoKenzie.svg";
 
 export const Register = () => {
   const { submitRegister } = useContext(UserContext);
@@ -34,6 +35,7 @@ export const Register = () => {
     <ContainerRegister>
       <AsideInfo />
       <FormContainer>
+        {/* <img className="mobileLogo" src={Logo} alt="" /> */}
         <form noValidate onSubmit={handleSubmit(submitRegister)}>
           <div>
             <h2>Cadastro</h2>

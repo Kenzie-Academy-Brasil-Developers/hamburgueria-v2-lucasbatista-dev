@@ -21,6 +21,16 @@ export const FormContainer = styled.div`
   border: 2px solid ${colors.gray0};
   box-shadow: 0px 0px 30px -20px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  .mobileLogo {
+    width: 243.43px;
+    height: 56.4px;
+    position: sticky;
+    top: -90px;
+    /* display: none; */
+    @media (min-width: 900px) {
+      display: none;
+    }
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -33,13 +43,18 @@ export const FormContainer = styled.div`
       line-height: ${typography.heading4.heigth};
     }
   }
-  span {
+  .createAccount {
     width: 327px;
     height: 36px;
 
     font-size: ${typography.body.size};
     font-weight: ${typography.body.weigth};
     line-height: ${typography.body.heigth};
+    color: #999999;
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 20px;
   }
 `;
 
