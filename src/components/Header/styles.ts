@@ -15,6 +15,11 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     gap: 23px;
+    @media (max-width: 480px) {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
   }
 `;
 

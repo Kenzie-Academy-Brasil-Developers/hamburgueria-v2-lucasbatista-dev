@@ -11,6 +11,9 @@ export const LiCard = styled.li`
   :hover {
     border: 2px solid ${colors.gray600};
   }
+  @media (max-width: 550px) {
+    width: 85%;
+  }
 `;
 
 export const ImageDiv = styled.div`
