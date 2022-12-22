@@ -56,7 +56,7 @@ export const Login = () => {
         <span className="createAccount">
           Crie sua conta para saborear muitas delícias e matar sua fome!
         </span>
-        <Link className="button gray xl" to="/cadastro">
+        <Link className="button gray xl" to="/register">
           Cadastrar
         </Link>
       </FormContainer>

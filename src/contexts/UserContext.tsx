@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 import { toast } from "react-hot-toast";
 import { AxiosError } from "axios";
@@ -34,13 +34,13 @@ interface iDataProducts {
   img: string;
   price: number;
 }
+
 export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iUserContextProps) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [products, setProducts] = useState([] as iDataProducts[]);
-
   const [filtredProducts, setFiltredProducts] = useState(
     [] as iFiltredProducts[]
   );
@@ -110,10 +110,11 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       const { data } = await api.get("products");
       setProducts(data);
       setFiltredProducts(data);
-    } catch (error) {
-      // console.log(error);
+    } catch (error: any) {
+      console.log(error.response.status);
     }
   };
+
   // useEffect(() => {
   //   autoLogin();
   // }, []);
